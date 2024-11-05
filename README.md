@@ -1,6 +1,6 @@
 # Task Management Application - TaskNest
 
-A full-stack task management application with features like user authentication, real-time updates, and data visualization. This application is built using **Node.js** for the backend, **React** with **Vite** for the frontend, and **MongoDB** as the database.
+A full-stack task management application with features like user authentication, real-time updates, and data visualization. This application is built using **Node.js** for the backend, **React** with **Vite** for the frontend, and **MongoDB** as the database. The application is developed using TypeScript for both the frontend and backend, enhancing type safety and code reliability.
 
 ## Features
 1. **Task Management**: Create, view, edit, and delete tasks.
@@ -26,8 +26,11 @@ A full-stack task management application with features like user authentication,
 
 #### Clone the Repository
 ```bash
-git clone https://github.com/fasinafarook/TaskNest-frontend.git
-cd TaskNest-frontend
+frontend:-git clone https://github.com/fasinafarook/TaskNest-frontend.git
+cd frontend
+
+backend:-https://github.com/fasinafarook/TaskNest-backend
+cd backend
 ```
 
 #### Backend Setup
@@ -64,9 +67,23 @@ cd TaskNest-frontend
    npm run dev
    ```
 
+   #### backend Setup
+1. Navigate to the frontend directory:
+   ```bash
+   cd ../backend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the backend server:
+   ```bash
+   npm run dev
+   ```
+
 ### Accessing the Application
 - **Frontend**: [https://task-nest-nine.vercel.app/](https://task-nest-nine.vercel.app/)
-- **Backend**: Deployed on Render (provide the live link if available)
+- **Backend**: Deployed on Render
 
 ## Deployment
 - **Frontend**: Deployed on **Vercel**. To deploy, run:
@@ -82,10 +99,13 @@ cd TaskNest-frontend
 4. **Real-Time Updates**: See task changes in real-time.
 5. **Data Visualization**: View task statistics through charts.
 
-
+## Screenshots
+(Add screenshots or GIFs showcasing different parts of your app, e.g., task dashboard, data visualization)
 
 ## Contributing
 Contributions are welcome! Please fork this repository and submit pull requests for any enhancements.
 
 ## License
 This project is licensed under the MIT License.
+
+---
