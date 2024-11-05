@@ -1,6 +1,6 @@
 import { io, Socket } from 'socket.io-client';
 
-const SOCKET_URL = 'http://localhost:5000';
+const SOCKET_URL = 'https://tasknestapp.onrender.com';
 let socket: Socket;
 
 export const initSocket = () => {
