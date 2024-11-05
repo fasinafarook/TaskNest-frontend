@@ -8,4 +8,5 @@ export const getSession = (): string | null => {
 
 export const clearSession = () => {
     localStorage.removeItem('authTokens');
+    localStorage.removeItem('user');
 };

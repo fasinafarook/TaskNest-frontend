@@ -50,7 +50,7 @@ const Login: React.FC<LoginProps> = ({ setIsAuthenticated }) => {
       .login-title {
         text-align: center;
         color: #fff;
-        font-size: 2rem;
+        font-size: 1.2rem;
         font-weight: 600;
         margin-bottom: 1.5rem;
       }
@@ -124,10 +124,10 @@ const Login: React.FC<LoginProps> = ({ setIsAuthenticated }) => {
       .intro-text {
   display: flex;
   align-items: center;
-  color: #ffffff;
-  font-size: 1.1rem;
+  color: #8B6930;
+  font-size: 1rem;
   font-weight: 400;
-  margin-bottom: 1rem;
+  margin-bottom: 0.9rem;
   text-align: center;
 }
 
@@ -135,6 +135,12 @@ const Login: React.FC<LoginProps> = ({ setIsAuthenticated }) => {
   margin-right: 0.5rem;
   color: #3498db; /* Icon color */
   font-size: 1.5rem; /* Increase icon size */
+}
+.app-name {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center; /* Center the text */
 }
 
     `;
@@ -184,11 +190,14 @@ const Login: React.FC<LoginProps> = ({ setIsAuthenticated }) => {
       <Toaster />
       <div className="login-container">
         <Form onSubmit={handleSubmit}>
-        <h2 className="login-title">Login</h2>
+        <h1 className="app-name">
+        <FontAwesomeIcon icon={faClipboardList} className="intro-icon" />
+        TaskNest</h1>
         <p className="intro-text">
-          <FontAwesomeIcon icon={faClipboardList} className="intro-icon" />
           Stay organized and boost your productivity.
         </p>
+        <h3 className="login-title">Login</h3>
+        
           {error && <p className="error-message">{error}</p>}
 
           <FormGroup className="input-group">

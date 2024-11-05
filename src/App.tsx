@@ -3,24 +3,64 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import LoginForm from './components/Login';
 import RegisterForm from './components/Register';
 import Dashboard from './pages/Dashboard';
+import { getSession } from './utils/auth';
 
 const App: React.FC = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-
-  // Check authentication status on initial load and route changes
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
+    // Initialize authentication state from token
+    const token = getSession();
+    return !!token;
+  });
+  
+  // Effect to watch for token changes
   useEffect(() => {
-    const token = localStorage.getItem('token'); 
-    setIsAuthenticated(!!token); // Set authenticated state based on the presence of a token
-  }, []);
-  return (
-      <Router>
-          <Routes>
-          <Route path="/" element={isAuthenticated ? <Navigate to="/dashboard" replace /> : <LoginForm setIsAuthenticated={setIsAuthenticated} />} />
-          <Route path="/register" element={isAuthenticated ? <Navigate to="/" replace /> : <RegisterForm setIsAuthenticated={setIsAuthenticated} />} />
-          <Route path="/dashboard" element={isAuthenticated ? <Dashboard setIsAuthenticated={setIsAuthenticated} /> : <Navigate to="/login" replace />} />
+    const handleStorageChange = () => {
+      const token = getSession();
+      setIsAuthenticated(!!token);
+    };
 
-          </Routes>
-      </Router>
+    // Listen for storage changes
+    window.addEventListener('storage', handleStorageChange);
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
+
+  return (
+    <Router>
+      <Routes>
+        <Route 
+          path="/" 
+          element={
+            isAuthenticated ? (
+              <Navigate to="/dashboard" replace />
+            ) : (
+              <LoginForm setIsAuthenticated={setIsAuthenticated} />
+            )
+          } 
+        />
+        <Route 
+          path="/register" 
+          element={
+            isAuthenticated ? (
+              <Navigate to="/dashboard" replace />
+            ) : (
+              <RegisterForm setIsAuthenticated={setIsAuthenticated} />
+            )
+          } 
+        />
+        <Route 
+          path="/dashboard" 
+          element={
+            isAuthenticated ? (
+              <Dashboard setIsAuthenticated={setIsAuthenticated} />
+            ) : (
+              <Navigate to="/" replace />
+            )
+          } 
+        />
+      </Routes>
+    </Router>
   );
 };
 
