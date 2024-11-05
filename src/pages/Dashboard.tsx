@@ -285,7 +285,7 @@ const Dashboard: React.FC<UserHomeProps> = ({ setIsAuthenticated }) => {
               }}
             >
               <strong style={{ color: "#FFFFFF" }}>
-                You have successfully registered with{" "}
+               Success! You've logged in using{" "}
               </strong>
               <span style={{ color: "#8B6930", fontWeight: "500" }}>
                 {user?.email}
