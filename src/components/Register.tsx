@@ -3,8 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { registerUser } from '../services/authService';
 import { saveSession } from '../utils/auth';
 import { toast } from 'react-toastify';
-import { Form, Button, FormGroup, FormControl, FormLabel, InputGroup } from 'react-bootstrap';
+import { Form, Button, FormGroup, FormControl, InputGroup } from 'react-bootstrap';
 import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClipboardList } from '@fortawesome/free-solid-svg-icons';
 
 interface RegisterProps {
   setIsAuthenticated: (value: boolean) => void;
@@ -55,10 +57,16 @@ const RegisterForm: React.FC<RegisterProps> = ({ setIsAuthenticated }) => {
     <>
       <div className="login-container">
         <Form onSubmit={handleSubmit} className="register-form">
-          <h2 className="login-title">Register</h2>
-          
+        <h1 className="app-name">
+        <FontAwesomeIcon icon={faClipboardList} className="intro-icon" />
+        TaskNest</h1>
+        <p className="intro-text">
+  Join our task management app and stay on top of your daily goals.
+</p>
+          <h5 className="login-title">Register</h5>
+
           <FormGroup className="mb-3">
-            <FormLabel>Username</FormLabel>
+            {/* <FormLabel>Username</FormLabel> */}
             <InputGroup>
               <InputGroup.Text className="input-icon">
                 <FaUser />
@@ -81,7 +89,7 @@ const RegisterForm: React.FC<RegisterProps> = ({ setIsAuthenticated }) => {
           </FormGroup>
 
           <FormGroup className="mb-3">
-            <FormLabel>Email</FormLabel>
+            {/* <FormLabel>Email</FormLabel> */}
             <InputGroup>
               <InputGroup.Text className="input-icon">
                 <FaEnvelope />
@@ -104,7 +112,7 @@ const RegisterForm: React.FC<RegisterProps> = ({ setIsAuthenticated }) => {
           </FormGroup>
 
           <FormGroup className="mb-3">
-            <FormLabel>Password</FormLabel>
+            {/* <FormLabel>Password</FormLabel> */}
             <InputGroup>
               <InputGroup.Text className="input-icon">
                 <FaLock />
@@ -165,7 +173,7 @@ const RegisterForm: React.FC<RegisterProps> = ({ setIsAuthenticated }) => {
           .login-title {
             text-align: center;
             color: #fff;
-            font-size: 2rem;
+            font-size: 1rem;
             font-weight: 600;
             margin-bottom: 1.5rem;
           }
@@ -222,6 +230,28 @@ const RegisterForm: React.FC<RegisterProps> = ({ setIsAuthenticated }) => {
             text-align: center;
             color: white;
           }
+            .app-name {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center; /* Center the text */
+}
+  .intro-text {
+  display: flex;
+  align-items: center;
+  color: #8B6930;
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.intro-icon {
+  margin-right: 0.5rem;
+  color: #3498db; /* Icon color */
+  font-size: 1.5rem; /* Increase icon size */
+}
+
         `}
       </style>
     </>
