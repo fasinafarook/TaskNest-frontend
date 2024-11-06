@@ -60,7 +60,7 @@ const Dashboard: React.FC<UserHomeProps> = ({ setIsAuthenticated }) => {
         const parsedUser = JSON.parse(storedUser);
         console.log('parsedUser',parsedUser);
         
-        setUser(parsedUser.id);
+        setUser(parsedUser);
         socket.emit('join', parsedUser.id);
     }
 
