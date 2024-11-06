@@ -55,6 +55,16 @@ const Dashboard: React.FC<UserHomeProps> = ({ setIsAuthenticated }) => {
     initSocket();
     const socket = getSocket();
 
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+        const parsedUser = JSON.parse(storedUser);
+        console.log('parsedUser',parsedUser);
+        
+        setUser(parsedUser.id);
+        socket.emit('join', parsedUser.id);
+    }
+
+
     socket.on("taskCreated", (newTask: ITask) => {
       setTasks((prev) => [...prev, newTask]);
     });
@@ -77,10 +87,10 @@ const Dashboard: React.FC<UserHomeProps> = ({ setIsAuthenticated }) => {
       );
     });
 
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
+    // const storedUser = localStorage.getItem("user");
+    // if (storedUser) {
+    //   setUser(JSON.parse(storedUser));
+    // }
     loadTasks();
 
     return () => {
